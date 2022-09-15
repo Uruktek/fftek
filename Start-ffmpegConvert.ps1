@@ -1,3 +1,18 @@
+
+$_isSamples = Test-Path -Path "./samples"
+$_isConverted = Test-Path -Path "./converted"
+
+# Checking that both converted and samples exist and if they don't make them - CL 9/14/22
+if (!$_isSamples) {
+    Write-host "Creating Samples directory. Please place the tracks in this dir"
+    New-Item -Path "./samples" -ItemType Directory
+}
+if (!$_isConverted) {
+    Write-host "Creating converted directory. Please place the tracks in this dir"
+    New-Item -Path "./converted" -ItemType Directory
+}
+
+
 # Getting the file names from the samples - CL 9/14/22
 [array]$_samplesPath = Get-ChildItem "./samples/" | Select-Object Name
 
